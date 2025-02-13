@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage with Navbar and Sidebar</title>
+    <link rel="stylesheet" href="homestyle.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+                <div class="sidebar" id="sidebar">
+                    <div class="profile">
+                        <img src="Images/background.jpg" alt="Profile Picture" id="profile-picture">
+                        <p id="username">Log In</p>
+                        <p id="email"></p>
+                    </div>
+                    <ul>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Creations</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="index.html" id="login-signup">Log In</a> / <a href="register.html">Sign Up</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar-center">
+                <a href="home.html">Home</a>
+                <a href="#">Templates</a>
+                <a href="#">Clipmark</a>
+                <a href="#">Gen4 Showcase</a>
+                <a href="#">Creations</a>
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="navbar-right">
+                <a href="index.html" id="login-link">Log In</a>
+            </div>
+        </nav>
+    </header>
+    <main onclick="closeSidebar()">
+        <!-- Main content goes here -->
+    </main>
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (loggedInUser) {
+                document.getElementById('username').textContent = loggedInUser.userIdentifier;
+                document.getElementById('email').textContent = loggedInUser.email || '';
+                document.getElementById('login-link').style.display = 'none';
+                document.getElementById('login-signup').style.display = 'none';
+            } else {
+                document.getElementById('username').textContent = 'Log In';
+                document.getElementById('email').textContent = '';
+                document.getElementById('login-link').style.display = 'block';
+                document.getElementById('login-signup').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
