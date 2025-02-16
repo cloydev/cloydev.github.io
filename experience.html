@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience - Cloyd Portfolio</title>
+  <link rel="stylesheet" href="experience.css">
+</head>
+<body>
+  <div class="nav-container">
+    <nav>
+      <div class="nav-left">
+        <h1>Cloyd</h1>
+        <ul>
+          <li><a href="home.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="skills.html" class="nav-link">Skills</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link" id="experience-link">Experience</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <section id="experience" class="content">
+      <h1>Experience</h1>
+      <p>Details about experience.</p>
+    </section>
+  </main>
+
+  <script>
+    // Add transition effects when clicking on navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = this.getAttribute('href');
+
+        // Add zoom-out and slide-out animation
+        document.querySelector('.content').classList.add('zoom-out', 'slide-out');
+
+        // Wait for the animation to complete, then navigate to the target page
+        setTimeout(() => {
+          window.location.href = target;
+        }, 500); // Match the duration of the animations
+      });
+    });
+
+    // Add zoom-in and slide-in animation when the page loads
+    window.addEventListener('load', () => {
+      document.querySelector('.content').classList.add('zoom-in', 'slide-in');
+    });
+  </script>
+</body>
+</html>

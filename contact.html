@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Cloyd Portfolio</title>
+  <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="nav-container">
+    <nav>
+      <div class="nav-left">
+        <h1>Cloyd</h1>
+        <ul>
+          <li><a href="home.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="skills.html" class="nav-link">Skills</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <section id="contact" class="content">
+      <h1>Contact Me</h1>
+      <form id="contact-form" action="https://formspree.io/f/meoelnjw" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <div id="message-sent" style="display: none;">Message Sent!</div>
+    </section>
+  </main>
+  <script>
+    // Add transition effects when clicking on navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = this.getAttribute('href');
+
+        // Add zoom-out and slide-out animation
+        document.querySelector('.content').classList.add('zoom-out', 'slide-out');
+
+        // Wait for the animation to complete, then navigate to the target page
+        setTimeout(() => {
+          window.location.href = target;
+        }, 500); // Match the duration of the animations
+      });
+    });
+
+    // Add zoom-in and slide-in animation when the page loads
+    window.addEventListener('load', () => {
+      document.querySelector('.content').classList.add('zoom-in', 'slide-in');
+    });
+
+    // Handle form submission
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          document.getElementById('message-sent').style.display = 'block';
+          this.reset();
+        } else {
+          alert('There was an error sending your message. Please try again.');
+        }
+      }).catch(error => {
+        alert('There was an error sending your message. Please try again.');
+      });
+    });
+  </script>
+</body>
+</html>

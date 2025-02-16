@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Cloyd Portfolio</title>
+  <link rel="stylesheet" href="cloydprof.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="nav-container">
+    <nav>
+      <div class="nav-left">
+        <h1 style="white-space: nowrap;">C L O Y D</h1>
+        <ul>
+          <li><a href="home.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="skills.html" class="nav-link">Skills</a></li>
+          <li><a href="education.html" class="nav-link">Education</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <script>
+      // Add transition effects when clicking on navigation links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = this.getAttribute('href');
+
+          // Add zoom-out and slide-out animation
+          document.querySelector('.content').classList.add('zoom-out', 'slide-out');
+
+          // Wait for the animation to complete, then navigate to the target page
+          setTimeout(() => {
+            window.location.href = target;
+          }, 500); // Match the duration of the animations
+        });
+      });
+
+      // Add zoom-in and slide-in animation when the page loads
+      window.addEventListener('load', () => {
+        document.querySelector('.content').classList.add('zoom-in', 'slide-in');
+      });
+    </script>
+    <section id="home" class="content">
+      <div class="profile-pic">
+        <img src="cloydpic.png" alt="Cloyd's Profile Picture">
+      </div>
+      <div class="text-content">
+        <h1>Hi, <span class="highlight">It's Cloyd</span></h1>
+        <h2>I'm a <span class="dynamic-text"></span></h2>
+        <p>I'm the one better, and I'm better than no one. <br> Creating magic with code and creativity.</p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/ur.kev.clyd"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@cloydev"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.tiktok.com/@earnclyd"><i class="fab fa-tiktok"></i></a>
+          <a href="https://web.facebook.com/ur.kev.clyd"><i class="fab fa-facebook"></i></a>
+        </div>
+        <button class="hire-me">
+          <span>Hire Me</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Dynamic Text Animation
+    const dynamicText = document.querySelector(".dynamic-text");
+    const professions = ["Web Designer", "YouTuber", "Developer", "Video Editor", "Pogi"];
+    let index = 0;
+
+    setInterval(() => {
+      dynamicText.textContent = professions[index];
+      index = (index + 1) % professions.length;
+    }, 2000);
+  </script>
+</body>
+</html>
