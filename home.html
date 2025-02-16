@@ -61,12 +61,58 @@
           <a href="https://www.tiktok.com/@earnclyd"><i class="fab fa-tiktok"></i></a>
           <a href="https://web.facebook.com/ur.kev.clyd"><i class="fab fa-facebook"></i></a>
         </div>
-        <button class="hire-me">
-          <span>Hire Me</span>
+        <button class="hire-me" onclick="openHireForm()">
+          <span>Bring me on board</span>
         </button>
       </div>
     </section>
   </main>
+
+  <!-- Hire Me Form (Hidden by Default) -->
+  <div id="hire-form-overlay" class="overlay">
+    <div class="hire-form-container">
+      <span class="close-btn" onclick="closeHireForm()">&times;</span>
+      <h2>How Can I Help U❤️</h2>
+      <form id="hire-form" action="https://formspree.io/f/meoelnjw" method="post">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="project">Project Type</label>
+          <select id="project" name="project" required>
+            <option value="" disabled selected>Select a project type</option>
+            <option value="web-design">Web Design</option>
+            <option value="web-development">Web Development</option>
+            <option value="video-editing">Video Editing</option>
+            <option value="other">Photo Editing</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="budget">Budget</label>
+          <select id="budget" name="budget" required>
+            <option value="" disabled selected>Select your budget</option>
+            <option value="500-1000">₱300 - ₱500</option>
+            <option value="1000-5000">₱500 - ₱1000</option>
+            <option value="5000+">₱1000+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Project Details</label>
+          <textarea id="message" name="message" placeholder="Describe your project..." rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+      <div id="thank-you-message" style="display: none; text-align: center; color: #fff; margin-top: 20px;">
+        Check your email later for a reply.
+      </div>
+    </div>
+  </div>
 
   <script>
     // Dynamic Text Animation
@@ -78,6 +124,39 @@
       dynamicText.textContent = professions[index];
       index = (index + 1) % professions.length;
     }, 2000);
+
+    // Open Hire Form
+    function openHireForm() {
+      document.getElementById("hire-form-overlay").style.display = "flex";
+    }
+
+    // Close Hire Form
+    function closeHireForm() {
+      document.getElementById("hire-form-overlay").style.display = "none";
+    }
+
+    // Form Submission
+    document.getElementById("hire-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.style.display = "none";
+          document.getElementById("thank-you-message").style.display = "block";
+        } else {
+          alert("Oops! There was a problem submitting your form");
+        }
+      }).catch(error => {
+        alert("Oops! There was a problem submitting your form");
+      });
+    });
   </script>
 </body>
 </html>
