@@ -6,59 +6,12 @@
   <title>Welcome to Cloyd</title>
   <link rel="stylesheet" href="cloydprof.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    @media (max-width: 768px) {
-      .nav-container nav {
-        flex-direction: column;
-        align-items: center;
-      }
-      .nav-left h1 {
-        font-size: 1.5rem;
-      }
-      .nav-left ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .nav-left ul li {
-        margin: 10px 0;
-      }
-      .profile-pic img {
-        width: 100px;
-        height: 100px;
-      }
-      .text-content h1 {
-        font-size: 1.5rem;
-      }
-      .text-content h2 {
-        font-size: 1.2rem;
-      }
-      .text-content p {
-        font-size: 1rem;
-      }
-      .social-icons a {
-        margin: 0 5px;
-      }
-      .hire-me {
-        font-size: 1rem;
-        padding: 10px 20px;
-      }
-      .hire-form-container {
-        width: 90%;
-      }
-    }
-  </style>
 </head>
 <body>
   <div class="nav-container">
     <nav>
       <div class="nav-left">
         <h1 style="white-space: nowrap;">C L O Y D</h1>
-        <ul>
-          <li><a href="http://linktr.ee/EarningGames2025" class="nav-link">Click here ➡️Earning Game Links 2025
-          </a></li>
-         
-        </ul>
       </div>
     </nav>
   </div>
@@ -84,6 +37,11 @@
       // Add zoom-in and slide-in animation when the page loads
       window.addEventListener('load', () => {
         document.querySelector('.content').classList.add('zoom-in', 'slide-in');
+        const popupText = document.querySelector('.popup-text');
+        popupText.style.display = 'block';
+        setTimeout(() => {
+          popupText.style.display = 'none';
+        }, 2000);
       });
     </script>
     <section id="home" class="content">
@@ -105,6 +63,10 @@
         </button>
       </div>
     </section>
+    <a href="https://linktr.ee/EarningGames2025" class="new-icon">
+      <i class="fas fa-gamepad"></i>
+    </a>
+    <div class="popup-text">Earning Games 2025</div>
   </main>
 
   <!-- Hire Me Form (Hidden by Default) -->
