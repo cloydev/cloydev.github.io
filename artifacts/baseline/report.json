@@ -1,0 +1,48 @@
+[
+  {
+    "title": "Kevin Cloyd \u2014 Creative Portfolio",
+    "viewport": [
+      1366,
+      768
+    ],
+    "document": [
+      1366,
+      816
+    ],
+    "horizontalOverflow": false,
+    "verticalOverflow": true,
+    "mainBottom": 768,
+    "headingCount": 1,
+    "activeLinks": [
+      {
+        "text": "Home",
+        "href": "index.html"
+      },
+      {
+        "text": "Home",
+        "href": "index.html"
+      }
+    ],
+    "duplicateIds": [],
+    "missingImages": [
+      "images/waiz-desktop.jpg",
+      "images/waiz-mobile.jpg",
+      null
+    ],
+    "overflow": [],
+    "theme": "light",
+    "page": "index.html",
+    "errors": [],
+    "failedRequests": [
+      {
+        "status": 404,
+        "url": "http://127.0.0.1:8765/images/waiz-desktop.jpg"
+      },
+      {
+        "status": 404,
+        "url": "http://127.0.0.1:8765/images/waiz-mobile.jpg"
+      }
+    ],
+    "screenshot": "artifacts\\baseline\\index-1366x768-light.png"
+  }
+]
